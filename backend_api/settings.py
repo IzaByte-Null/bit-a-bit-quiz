@@ -9,9 +9,10 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+#IMPORTS
 import os
 from pathlib import Path
+import dj_database_url # para transferencia do banco de dados
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -157,13 +158,20 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60), 
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),    
 }
+ # Antigo para servidor local
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_collected')
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_collected')
+# Novo STATIC_ROOT: O local onde os arquivos  serão coletados pelo collectstatic
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
+
+#  caminho completo para o gerenciamento de arquivos de mídia (upload de fotos)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # CONFIGURAÇAO ENVIO DE EMAIL 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
 
-# EMAIL/django = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Email do nosso suporte 
 DEFAULT_FROM_EMAIL = 'suporte@bitabit.com'
@@ -172,3 +180,20 @@ DEFAULT_FROM_EMAIL = 'suporte@bitabit.com'
 LOGIN_REDIRECT_URL = '/principal/'
 
 LOGOUT_REDIRECT_URL = '/login/' 
+
+ALLOWED_HOSTS = ['*'] # Permite o acesso de outros dominios 
+
+#SUBINDO SITE PARA O SERVIDOR/ IMPORTAÇOES DE DADOS 
+DATABASE_URL = os.environ.get("DATABASE_URL")
+
+if DATABASE_URL:
+    DATABASES = {
+        "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=600)
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3', 
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
