@@ -6,10 +6,10 @@ class RespostaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Resposta
         fields = ['id', 'texto'] 
-        # ATENÇÃO: Nunca exponha 'is_correta' aqui!
+        #Nunca expor 'is_correta' aqui
 
 class PerguntaSerializer(serializers.ModelSerializer):
-    # Serializa todas as respostas relacionadas à pergunta
+    # Serializa todas as respostas relacionadas as pergunta
     respostas = RespostaSerializer(many=True, read_only=True) 
 
     class Meta:

@@ -48,18 +48,18 @@ body {
 }
 
 
-/* 🛑 CORREÇÃO: Posicionamento para o ícone de senha */
+
 .grupo-input {
     display: flex;
     flex-direction: column;
     gap: 5px; 
-    position: relative; /* ESSENCIAL: Ponto de referência para o ícone */
+    position: relative; 
 }
 
-/* 🛑 CORREÇÃO: Espaço interno no input e Padding */
+
 .grupo-input input {
     padding: 10px;
-    padding-right: 40px; /* Adiciona espaço para o ícone */
+    padding-right: 40px; 
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 100%; 
@@ -69,7 +69,7 @@ body {
     font-weight: bold;
 }
 
-/* 🛑 NOVO ESTILO: Estilização e posicionamento absoluto do ícone */
+
 .toggle-password {
     position: absolute;
     right: 10px;

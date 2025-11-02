@@ -21,7 +21,7 @@ body {
     flex-direction: column;
 }
 
-/* Cabeçalho do Quiz */
+
 .cabecalho-quiz {
     display: flex;
     justify-content: space-between;
@@ -76,7 +76,7 @@ body {
     font-weight: 600;
 }
 
-/* Barra de Progresso */
+
 .barra-progresso {
     width: 100%;
     height: 8px;
@@ -94,7 +94,7 @@ body {
     transition: width 0.3s ease;
 }
 
-/* Conteúdo Principal */
+
 .conteudo-principal {
     flex: 1;
     display: flex;
@@ -102,7 +102,7 @@ body {
     gap: 40px;
 }
 
-/* Seção da Pergunta */
+
 .secao-pergunta {
     background: white;
     border-radius: 16px;
@@ -118,7 +118,7 @@ body {
     text-align: left;
 }
 
-/* Seção das Alternativas */
+
 .secao-alternativas {
     display: flex;
     flex-direction: column;
@@ -177,7 +177,7 @@ body {
     flex: 1;
 }
 
-/* Rodapé do Quiz */
+
 .rodape-quiz {
     display: flex;
     justify-content: space-between;
@@ -216,7 +216,8 @@ body {
     color: #8b5cf6;
 }
 
-/* Botão de Ajuda */
+
+
 
 .botao-ajuda {
     position: fixed;
@@ -224,21 +225,21 @@ body {
     right: 24px;
     width: 48px;
     height: 48px;
-    background: #1f2937; /* Cor escura do seu gamemode.css */
+    background: #1f2937; 
     color: white;
     border: none;
     border-radius: 50%;
-    font-size: 28px; /* Ajustei para 28px para ser consistente com o principal */
+    font-size: 28px; 
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
     z-index: 100;
 
-    /* NOVO: Alinhamento Perfeito com Flexbox */
-    display: flex; /* Define o container como flex */
-    align-items: center; /* Centraliza verticalmente */
-    justify-content: center; /* Centraliza horizontalmente */
+    
+    display: flex; /* mudandoo tudo saprra */
+    align-items: center; 
+    justify-content: center; 
 }
 
 .botao-ajuda:hover {
@@ -246,7 +247,7 @@ body {
     transform: scale(1.1);
 }
 
-/* Design Responsivo */
+
 @media (max-width: 768px) {
     .container {
         padding: 16px;

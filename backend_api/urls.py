@@ -36,7 +36,7 @@ urlpatterns = [
     path('auth/login/', auth_views.LoginView.as_view(template_name='login.html'), name='auth_login_page'),
       
     
-    # 5 ROTAS NATIVAS PARA RECUPERAÇÃO DE SENHA (Incluir o resto do fluxo)
+    # 5 ROTAS NATIVAS PARA RECUPERAÇÃO DE SENHA 
     
     path('auth/', include('django.contrib.auth.urls')),
 ]

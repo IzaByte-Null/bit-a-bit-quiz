@@ -270,7 +270,7 @@ body {
     
     .toggle-password {
         font-size: 1em;
-        /* Reajuste para telas muito pequenas */
+        
         transform: translateY(-50%); 
     }
 }
@@ -278,21 +278,21 @@ body {
 .conteudo-login form {
     display: flex;
     flex-direction: column;
-    /* Adiciona o espaçamento interno do formulário para separar os itens */
+    
     gap: 25px; 
     width: 100%;
 }
 
-/* 🛑 2. Remove o gap dos itens de link do formulário, pois ele já foi aplicado ao form */
+
 .conteudo-login {
-    /* Mantenha seu estilo original, mas garanta que o form não conte como um item */
-    gap: 0; /* Mude para 0 para que o gap seja aplicado dentro do form, não entre o form e os links */
+    
+    gap: 0; 
 }
 
 
-/* 🛑 3. Ajuste o Esqueci a Senha para ficar visível (corrigindo o padding) */
+
 .botao-esqueci {
-    padding: 10px 0; /* Dá padding no topo e base para ocupar o espaço do gap */
+    padding: 10px 0; 
     text-decoration: none; 
     background-color: transparent; 
     color: #333; 

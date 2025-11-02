@@ -1,4 +1,3 @@
-/* Cores base do seu projeto */
 :root {
     --roxo-principal: #8b5cf6;
     --roxo-claro: #a855f7;
@@ -23,28 +22,28 @@ body {
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 500px; /* Largura ideal para um card de perfil */
+    max-width: 500px; 
     overflow: hidden;
 }
 
-/* Header (Semelhante ao topo do Discord) */
+
 .perfil-header {
     background: linear-gradient(135deg, var(--roxo-principal), var(--roxo-claro));
     height: 100px;
     position: relative;
 }
 
-/* Avatar com borda e sombra */
+
 .perfil-avatar {
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    background-color: white; /* Borda externa branca */
+    background-color: white; 
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 55px; /* Desce um pouco para invadir o conteúdo */
+    top: 55px; 
     left: 20px;
     border: 5px solid white;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -55,10 +54,10 @@ body {
     color: var(--roxo-principal);
 }
 
-/* Conteúdo Principal */
+
 .perfil-conteudo {
     padding: 20px;
-    padding-top: 60px; /* Espaço para o avatar */
+    padding-top: 60px; 
 }
 
 .perfil-card {
@@ -90,7 +89,7 @@ body {
     color: var(--roxo-principal);
 }
 
-/* Botões de Ação */
+
 .perfil-acoes {
     display: flex;
     gap: 15px;
