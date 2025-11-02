@@ -9,7 +9,7 @@ from django.contrib.auth import views as auth_views
 from usuarios import views as user_views
 
 
-# Importações de arquivos estaticos e de mídia
+# Importaçoes de arquivos estaticos e de midia
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -44,7 +44,7 @@ urlpatterns = [
 
 # ARQUIVOS DE MiDIA
 if settings.DEBUG:
-    # (CSS, JS) a partir do STATIC_URL. Mudei para STATIC_ROOT por convenção.
+    # (CSS, JS) a partir do STATIC_URL. Mudei para STATIC_ROOT por convenção
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     
     # (uploads)

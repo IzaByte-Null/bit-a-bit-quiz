@@ -9,12 +9,12 @@ def criar_ou_atualizar_perfil_usuario(sender, instance, created, **kwargs):
     Cria automaticamente o Perfil quando um novo User é criado.
     Salva o Perfil quando o User é atualizado.
     """
-    # Cria o perfil se o usuário for novo 
+    # Cria o perfil se o usuario for novo 
     if created:
         Perfil.objects.create(user=instance, is_assinante=False)
     
     # Salva o perfil sempre que o User for salvo
-    # Usando para lidar com o erro de usuários antigos sem perfil
+    # Usando para lidar com o erro de usuarios antigos sem perfil
     try:
         instance.perfil.save()
     except Perfil.DoesNotExist:
