@@ -13,7 +13,7 @@ urlpatterns = [
     path('chatbot/premium/', views.pagina_chatbot_premium, name='chatbot_page'),
     
     
-    # ROTAS DE API (Endpoints JSON) APAGAD
+    # ROTAS DE API (Endpoints JSON) APAGADo
     
 
     # Rotas Estáticas (POST ou GET)

@@ -11,14 +11,13 @@ from rest_framework.response import Response
 import json
 import random
 
-# Tente importar bibliotecas externas (para evitar erros se não estiverem instaladas)
 try:
     from google import genai
     from google.genai.errors import APIError 
-    # Tente importar o Perfil do seu app 'usuarios'
+    
     from usuarios.models import Perfil 
 except ImportError:
-    # Caso as bibliotecas de IA ou o modelo 'Perfil' não existam ainda
+    
     genai = None
     APIError = Exception
     Perfil = None
@@ -29,9 +28,9 @@ from .models import Pergunta, Resposta, DIFICULDADE_CHOICES, Pontuacao
 from .serializers import PerguntaSerializer, PontuacaoSerializer
 from django.db import models # Necessário para models.Max
 
-# ----------------------------------------------------------------
-# INICIALIZAÇÃO GLOBAL DO CLIENTE GEMINI
-# ----------------------------------------------------------------
+
+# INICIALIZAÇÃO GLOBAL DA CHAVE GEMINI
+
 gemini_client = None
 if settings.GEMINI_API_KEY and genai:
     try:
@@ -58,7 +57,7 @@ def chatbot_responder(request):
             return JsonResponse({
                 'error': 'Acesso negado. O BitBot é um recurso exclusivo para assinantes.'
             }, status=403)
-    except Exception: # Captura Perfil.DoesNotExist ou AttributeError
+    except Exception: # Captura Perfil.DoesNotExist ou attributeError
         return JsonResponse({
             'error': 'Erro no perfil do usuário. Acesso negado.'
         }, status=403)
@@ -73,7 +72,7 @@ def chatbot_responder(request):
     if not pergunta:
         return JsonResponse({'resposta': 'Por favor, digite sua pergunta sobre T.I. ou a plataforma.'})
 
-    # 3 -Interação com Gemini
+    # 3 -interaçao com Gemini
     try:
         system_instruction = (
             "Você é o BitBot, um assistente de inteligência artificial focado em Tecnologia da Informação. "
@@ -129,7 +128,7 @@ def pagina_chatbot_premium(request):
         if request.user.perfil.is_assinante:
              is_assinante = True
     except:
-        pass # Se não tiver perfil ou erro, is_assinante fica False
+        pass # Se não tiver perfil premium ou erro, is_assinante fica False
 
     if not is_assinante:
         # O nome da URL da página principal é 'principal'

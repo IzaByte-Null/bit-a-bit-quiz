@@ -9,7 +9,7 @@ class RespostaSerializer(serializers.ModelSerializer):
         #Nunca expor 'is_correta' aqui
 
 class PerguntaSerializer(serializers.ModelSerializer):
-    # Serializa todas as respostas relacionadas as pergunta
+    # Serializa todas as respostas relacionadas as pergunta do quiz
     respostas = RespostaSerializer(many=True, read_only=True) 
 
     class Meta:

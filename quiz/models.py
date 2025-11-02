@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 from django.db import models
 from django.contrib.auth.models import User
-from django.contrib.auth import get_user_model # Obtém o modelo de usuário ativo no projeto
+from django.contrib.auth import get_user_model # modelo de usuário ativo no projeto
 User = get_user_model()
 
 # Opções de Dificuldade
@@ -24,7 +24,7 @@ class Pergunta(models.Model):
         verbose_name="Dificuldade"
     )
     
-    # Adicione uma categoria, se quiser, para organizar
+    
     categoria = models.CharField(max_length=100, default='Geral', verbose_name="Categoria")
     
     tempo_limite = models.IntegerField(
