@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 from datetime import timedelta 
-import dj_database_url
+#import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -155,15 +155,6 @@ LOGIN_REDIRECT_URL = '/principal/'
 LOGOUT_REDIRECT_URL = '/login/'
 
 
-# CONFIGURAÇÃO DE SERVIDORES (ALLOWED_HOSTS FINAL)
-ALLOWED_HOSTS = [
-    '127.0.0.1', # Permite rodar localmente
-    'localhost',
-    'iza72.pythonanywhere.com', # DomInio PythonAnywhere
-    'bit-a-bit-quiz.onrender.com', # Dominio  do Render
-    '*.onrender.com', # Permite todos os subdomínios do Render
-]
-
 # CSRF_TRUSTED_ORIGINS de segurança
 CSRF_TRUSTED_ORIGINS = [
     'https://bit-a-bit-quiz.onrender.com',
@@ -171,19 +162,38 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
-# SUBINDO SITE PARA O SERVIDOR/ IMPORTAÇÕES DE DADOS
-DATABASE_URL = os.environ.get("DATABASE_URL")
+# SUBINDO SITE PARA O SERVIDOR/ IMPORTAÇÕES DE DADOS 
 
-if DATABASE_URL:
-    # Importação movida para dentro do bloco IF
-    import dj_database_url
-    DATABASES = {
-        "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=600)
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+DATABASE_URL = os.environ.get("DATABASE_URL") 
+
+ 
+
+if DATABASE_URL: 
+
+    # Importação movida para dentro do bloco IF 
+
+    import dj_database_url 
+
+    DATABASES = { 
+
+        "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=600) 
+
+    } 
+
+else: 
+
+    DATABASES = { 
+
+        'default': { 
+
+            'ENGINE': 'django.db.backends.sqlite3', 
+
+            'NAME': BASE_DIR / 'db.sqlite3', 
+
+        } 
+
+    } 
+
+ 
+
+ 
