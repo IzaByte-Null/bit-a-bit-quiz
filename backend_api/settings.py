@@ -121,6 +121,7 @@ STATICFILES_DIRS = [
 # Local onde os arquivos serão coletados pelo collectstatic
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+
 # Gerenciamento de arquivos de midia (upload de fotos)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -168,36 +169,23 @@ CSRF_TRUSTED_ORIGINS = [
 
 # SUBINDO SITE PARA O SERVIDOR/ IMPORTAÇÕES DE DADOS 
 
-DATABASE_URL = os.environ.get("DATABASE_URL") 
+# DATABASE_URL para DBD_NEON
+DATABASE_URL = os.environ.get("DBD_NEON") 
 
- 
 
 if DATABASE_URL: 
-
     # Importação movida para dentro do bloco IF 
-
+    
+    # IMPORT E DATABASES
     import dj_database_url 
-
     DATABASES = { 
-
         "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=600) 
-
     } 
 
 else: 
-
     DATABASES = { 
-
         'default': { 
-
             'ENGINE': 'django.db.backends.sqlite3', 
-
             'NAME': BASE_DIR / 'db.sqlite3', 
-
         } 
-
-    } 
-
- 
-
- 
+    }
