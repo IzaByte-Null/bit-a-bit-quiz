@@ -32,9 +32,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'default_secret_key_para_dev') # para 
 IS_PRODUCTION = os.environ.get('IS_PRODUCTION', 'False') == 'True' 
 
 if IS_PRODUCTION:
-    # Configurações de produçao(PythonAnywhere)
+    # Configurações do render
     DEBUG = False
-    ALLOWED_HOSTS = ['iza72.pythonanywhere.com']
+    ALLOWED_HOSTS = ['127.0.0.1', '.onrender.com'] #add o render
+    
     
     # CHAVE GIMINI
     GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
@@ -46,8 +47,8 @@ else:
     # Configurações de IDLE (Local e Code)
     DEBUG = True
     # Permite acesso de localhost e outras portas locais
-    ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
-    
+    ALLOWED_HOSTS = ['iza72.pythonanywhere.com']
+   
     #chave  do Gemini, ativa em desenvolvimento para QUIZ e BOT
     GEMINI_API_KEY = 'AIzaSyAWTerGbvZiWdqLdVdN8HwgZXxsXOZ-h9A' 
     
