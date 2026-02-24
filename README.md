@@ -1,6 +1,6 @@
 <p align="center">
   
-  <img src="https://i.pinimg.com/originals/fe/ae/91/feae919fe0079ec0c84443e4639a2aa7.gif" width="100%">
+  <img src="https://i.pinimg.com/originals/b0/c2/98/b0c2988dae6c0f5b02e7433021a91f39.gif" width="100%">
 </p>
 
 # Bit a Bit - Tech Support Chatbot
