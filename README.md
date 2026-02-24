@@ -131,7 +131,7 @@ Diferencial: integração do chatbot em backend totalmente funcional.
 
 IzaByte-Null: Backend completo, integração com Gemini API, regras de negócio, validações, CRUD de usuários, deploy no Render, gestão segura de banco de dados, JS.
 
-Frontend / Design: Criado pelo grupo, HTML/CSS/.
+Frontend / Design: Criado pelo grupo, HTML/CSS.
 
 Diferencial: Chatbot de suporte aos estudos e integração de lógica de negócios personalizada.
 
