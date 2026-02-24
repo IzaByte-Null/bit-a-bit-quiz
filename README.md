@@ -5,7 +5,7 @@
 
 # Bit a Bit - Tech Support Chatbot
 
-**Descrição curta:** Desenvolvido para auxiliar e otimizar os estudos de acadêmicos em TI.  
+** Desenvolvido para auxiliar e otimizar os estudos de acadêmicos em TI.  
 **Autor:** IzaByte / [GitHub](https://github.com/IzaByte-Null)  
 **Deploy / Link ao vivo:** [Render](https://bit-a-bit-quiz-1.onrender.com/)  
 **Banco de dados / serviços externos:** [Neon](https://neon.com/)  
