@@ -3,14 +3,15 @@
   <img src="https://i.pinimg.com/originals/b0/c2/98/b0c2988dae6c0f5b02e7433021a91f39.gif" width="100%">
 </p>
 
+---
 # Bit a Bit - Tech Support Chatbot
 
-** Desenvolvido para auxiliar e otimizar os estudos de acadêmicos em TI.  
+## Desenvolvido para auxiliar e otimizar os estudos de acadêmicos em TI.  
 **Autor:** IzaByte / [GitHub](https://github.com/IzaByte-Null)  
 **Deploy / Link ao vivo:** [Render](https://bit-a-bit-quiz-1.onrender.com/)  
 **Banco de dados / serviços externos:** [Neon](https://neon.com/)  
 
-> "Dismantling hardware to decrypt the logic of the ghost in the machine."
+
 
 ---
 
@@ -72,7 +73,7 @@ IzaByte-Null/
 
 ---
 ## 🚀 Como Executar Localmente
-´#Pré-requisitos
+#Pré-requisitos
 
 #Python >= 3.9
 
