@@ -42,7 +42,10 @@ Hospedado de forma gratuita, com otimizações de banco de dados e gestão segur
 
 **Bibliotecas auxiliares:**  
 - Google Generative AI (Gemini)  
-- Requests, Pydantic, Tenacity, Pillow, etc.  
+- Requests, Pydantic, Tenacity, Pillow, etc. 
+- python-dotenv (Gestão de variáveis de ambiente)
+- google-genai (SDK oficial do Gemini 2.0+)
+- psycopg2-binary (Adaptador PostgreSQL para Neon) 
 
 **Frontend:**  
 - HTML, CSS, JavaScript  
@@ -126,8 +129,25 @@ class GeminiView(APIView):
 - Recebe prompts do frontend e retorna respostas inteligentes focadas em TI / estudos.
 Diferencial: integração do chatbot em backend totalmente funcional.
 
----
+- O diferencial deste projeto é a capacidade de **observabilidade** e **rastreabilidade** das interações da IA. 
 
+### Fluxo de Ingestão de Dados:
+1. **Captura de Metadados:** O backend identifica o `IP de Origem` do usuário através do Header `HTTP_X_FORWARDED_FOR` (essencial para Cybersec).
+2. **Processamento:** A pergunta é enviada ao Gemini 2.0 Flash com instruções de sistema (System Instructions) para manter o foco em T.I.
+3. **Persistência (Sink):** A pergunta, a resposta da IA e os metadados do usuário são persistidos em tempo real na tabela `quiz_historicobot` no PostgreSQL (Neon).
+
+
+
+```sql
+-- Exemplo da Query de Monitoramento que utilizo no Neon:
+SELECT u.username, h.pergunta_usuario, h.ip_origem, h.data_interacao
+FROM quiz_historicobot h
+JOIN auth_user u ON h.usuario_id = u.id
+ORDER BY h.data_interacao DESC;
+
+```
+
+---
 ## 📚 Contribuições
 
 IzaByte-Null: Backend completo, integração com Gemini API, regras de negócio, validações, CRUD de usuários, deploy no Render, gestão segura de banco de dados, JS.
