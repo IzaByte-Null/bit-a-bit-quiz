@@ -1,5 +1,6 @@
 from dotenv import load_dotenv 
 import os
+import dj_database_url
 from pathlib import Path
 from datetime import timedelta 
 
@@ -10,7 +11,7 @@ load_dotenv() # for .env
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!| segurança 
-SECRET_KEY = os.environ.get('SECRET_KEY', 'default_secret_key_para_dev') # para o render
+SECRET_KEY = os.environ.get('SECRET_KEY', 'default_secret_key_para_dev')
 
 #configuração de ambiente for RENDER
 IS_RENDER_DEPLOYMENT = os.environ.get('RENDER') == 'true' 
@@ -130,20 +131,13 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
-# SUBINDO SITE PARA O SERVIDOR/ IMPORTAÇÕES DE DADOS 
-
+# SUBINDO SITE PARA O SERVIDOr/ IMPORTAÇÕES DE DADOS 
+                  #&
 # DATABASE_URL para DBD_NEON
-DATABASE_URL = os.environ.get("DBD_NEON") 
+DATABASE_URL = os.environ.get("DATABASE_URL") 
 
-if DATABASE_URL: 
-    import dj_database_url 
-    DATABASES = { 
-        "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=600) 
-    } 
-else: 
-    DATABASES = { 
-        'default': { 
-            'ENGINE': 'django.db.backends.sqlite3', 
-            'NAME': BASE_DIR / 'db.sqlite3', 
-        } 
+if DATABASE_URL:
+    import dj_database_url
+    DATABASES = {
+        'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=600)
     }
