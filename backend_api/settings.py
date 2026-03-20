@@ -132,12 +132,15 @@ CSRF_TRUSTED_ORIGINS = [
 
 
 # SUBINDO SITE PARA O SERVIDOr/ IMPORTAÇÕES DE DADOS 
-                  #&
+#                         &
 # DATABASE_URL para DBD_NEON
-DATABASE_URL = os.environ.get("DATABASE_URL") 
 
-if DATABASE_URL:
-    import dj_database_url
-    DATABASES = {
-        'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=600)
-    }
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=DATABASE_URL,
+        conn_max_age=600,
+        ssl_require=True
+    )
+}
