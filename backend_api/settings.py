@@ -1,10 +1,10 @@
-from dotenv import load_dotenv 
 import os
+from dotenv import load_dotenv
 import dj_database_url
 from pathlib import Path
-from datetime import timedelta 
+from datetime import timedelta
 
-load_dotenv() # for .env
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -135,12 +135,27 @@ CSRF_TRUSTED_ORIGINS = [
 #                         &
 # DATABASE_URL para DBD_NEON
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+BASE_DIR = Path(__file__).resolve().parent.parent
+env_path = BASE_DIR / '.env'
+load_dotenv(env_path)
+
+DATABASE_URL = os.getenv("DATABASE_URL") or os.getenv("DBD_NEON")
+
+if not DATABASE_URL:
+
+    if not IS_RENDER_DEPLOYMENT:
+        print("!! ERRO CRÍTICO: DATABASE_URL não encontrada no .env!")
+else:
+    print(":) Conexão com o Neon configurada.")
+
 
 DATABASES = {
     'default': dj_database_url.config(
         default=DATABASE_URL,
         conn_max_age=600,
-        ssl_require=True
+        conn_max_age_headers=True,
     )
 }
+
+#SSL no Neon
+DATABASES['default']['OPTIONS'] = {'sslmode': 'require'}
