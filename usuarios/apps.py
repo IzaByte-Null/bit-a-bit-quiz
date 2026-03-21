@@ -5,5 +5,5 @@ class UsuariosConfig(AppConfig):
     name = 'usuarios' 
 
     def ready(self):
-        # Importar o arquivo signals para que o Django o reconheça
+        
         import usuarios.signals 

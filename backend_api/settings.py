@@ -3,6 +3,9 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 from datetime import timedelta
+from django.db.backends.signals import connection_created
+from django.dispatch import receiver
+
 
 
 
@@ -148,13 +151,20 @@ DATABASES = {
     )
 }
 
-# SSL
 if DATABASES.get('default'):
+    
     DATABASES['default']['OPTIONS'] = {
         'sslmode': 'require',
     }
 
+
+@receiver(connection_created)
+def set_search_path(sender, connection, **kwargs):
+    if connection.vendor == 'postgresql':
+        with connection.cursor() as cursor:
+            cursor.execute("SET search_path TO sensitive, public, neon_auth")
+
 if DATABASE_URL:
-    print(":) DATABASE_URL Funcionando!!.")
+    print(":) DATABASE_URL Conectada!!.")
 else:
     print("X! ALERTA: DATABASE_URL vazia.")
