@@ -136,26 +136,30 @@ CSRF_TRUSTED_ORIGINS = [
 # DATABASE_URL para DBD_NEON
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 env_path = BASE_DIR / '.env'
-load_dotenv(env_path)
+if env_path.exists():
+    load_dotenv(env_path)
 
-DATABASE_URL = os.getenv("DATABASE_URL") or os.getenv("DBD_NEON")
-
-if not DATABASE_URL:
-
-    if not IS_RENDER_DEPLOYMENT:
-        print("!! ERRO CRÍTICO: DATABASE_URL não encontrada no .env!")
-else:
-    print(":) Conexão com o Neon configurada.")
-
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 DATABASES = {
     'default': dj_database_url.config(
         default=DATABASE_URL,
         conn_max_age=600,
-        conn_max_age_headers=True,
     )
 }
 
-#SSL no Neon
-DATABASES['default']['OPTIONS'] = {'sslmode': 'require'}
+# SSL
+if DATABASES.get('default'):
+    
+    if 'OPTIONS' not in DATABASES['default']:
+        DATABASES['default']['OPTIONS'] = {}
+    
+    DATABASES['default']['OPTIONS']['sslmode'] = 'require'
+
+# 
+if DATABASE_URL:
+    print(":) DATABASE_URL carregada com sucesso.")
+else:
+    print("X!  DATABASE_URL não encontrada! Verifique o painel no Servidor.")
