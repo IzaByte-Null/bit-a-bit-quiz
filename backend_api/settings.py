@@ -1,7 +1,7 @@
-import os
-from dotenv import load_dotenv
 import dj_database_url
+import os
 from pathlib import Path
+from dotenv import load_dotenv
 from datetime import timedelta
 
 
@@ -133,9 +133,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 # SUBINDO SITE PARA O SERVIDOr/ IMPORTAÇÕES DE DADOS 
 #                         &
-# DATABASE_URL para DBD_NEON
-
-BASE_DIR = Path(__file__).resolve().parent.parent
+#             DATABASE_URL para DBD_NEON
 
 env_path = BASE_DIR / '.env'
 if env_path.exists():
@@ -152,14 +150,11 @@ DATABASES = {
 
 # SSL
 if DATABASES.get('default'):
-    
-    if 'OPTIONS' not in DATABASES['default']:
-        DATABASES['default']['OPTIONS'] = {}
-    
-    DATABASES['default']['OPTIONS']['sslmode'] = 'require'
+    DATABASES['default']['OPTIONS'] = {
+        'sslmode': 'require',
+    }
 
-# 
 if DATABASE_URL:
-    print(":) DATABASE_URL carregada com sucesso.")
+    print(":) DATABASE_URL Funcionando!!.")
 else:
-    print("X!  DATABASE_URL não encontrada! Verifique o painel no Servidor.")
+    print("X! ALERTA: DATABASE_URL vazia.")
